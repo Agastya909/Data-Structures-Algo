@@ -116,6 +116,15 @@ void linkedList::addElementAtN(int data, int position)
     } 
     else
     {
+        node *tempNode2 = head;
+        for (int i = 1; i < position-1; i++)
+        {
+            tempNode2 = tempNode2->next;
+        }
+        tempNode->prev = tempNode2;
+        tempNode->next = tempNode2->next;
+        tempNode2->next = tempNode;
+        tempNode->next->prev = tempNode;
         
     }
     
@@ -172,8 +181,29 @@ void linkedList::deleteLast()
     }
 }
 
-void linkedList::deleteAtN(int data)
+void linkedList::deleteAtN(int position)
 {
+    node *tempNode = head;
+    if(head == NULL)
+    {
+        cout << "List is already empty.";
+    }
+    else if(position == 1)
+    {
+        head = tempNode->next;
+        tempNode->next->prev = NULL;
+        free(tempNode);
+    }
+    else
+    {
+        for (int i = 1; i < position; i++)
+        {
+            tempNode = tempNode->next;
+        }
+        tempNode->prev->next = tempNode->next;
+        tempNode->next->prev = tempNode->prev;
+        free(tempNode);
+    }
     
 }
 
