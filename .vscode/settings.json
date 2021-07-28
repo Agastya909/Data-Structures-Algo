@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "editor.fontFamily": "Input Mono, Light",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 17,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.cursorBlinking": true, 
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": true,
+    "git.ignoreLimitWarning": true,
+}
