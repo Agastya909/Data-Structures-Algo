@@ -1,7 +1,8 @@
 //settings json
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "editor.fontFamily": "Input Mono, Light",
