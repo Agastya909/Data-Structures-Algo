@@ -1,53 +1,60 @@
 #include <iostream>
 using namespace std;
 
-class treeNode
+class node
 {
 public:
     int key;
-    treeNode *left;
-    treeNode *right;
-    treeNode();
-    treeNode(int data)
-    {   
+    node *left;
+    node *right;
+    node();
+    node(int data)
+    {
         key = data;
         left = NULL;
         right = NULL;
     }
 };
 
-class binaryTree
+class BST
 {
 public:
-    treeNode *root;
+    node *root;
     void inputData();
     void makeBST(int data);
-    void print();
-    binaryTree addNode(treeNode *root, int data);
-    binaryTree()
+    void print(node *root);
+    node addNode(node *root, int data);
+    BST()
     {
         root = NULL;
     }
+    
 };
 
-binaryTree binaryTree::addNode(treeNode *root, int data)
+node BST::addNode(node *root, int data)
 {
-
+    if (root == NULL)
+    {
+        return node(data);
+    }
+    else if (root->key > data)
+    {
+        *root->right = addNode(root->left, data);
+    }
+    else
+    {
+        *root->right = addNode(root->right, data);
+    }
+    return *root;
 }
 
-void binaryTree::makeBST(int data)
+void BST::inputData()
 {
-    treeNode *node = new treeNode();
-
-}
-
-void binaryTree::inputData()
-{
-
     int operation, nodeData;
     while (operation != 0)
     {
         cout << "1 to enter data in BST\n";
+        cout << "2 to print the tree\n";
         cout << "0 to quit\n";
         cin >> operation;
         switch (operation)
@@ -58,16 +65,34 @@ void binaryTree::inputData()
         case 1:
             cout << "Enter number for node : ";
             cin >> nodeData;
-            makeBST(nodeData);
+            addNode(root, nodeData);
+            break;
+        case 2:
+            cout << "The tree in postorder traversal is : "; 
+            print(root);
+            cout << endl;
             break;
         }
     }
 }
 
+void BST::print(node *root)
+{
+    if (root == 0)
+    {
+        return;
+    }
+    else
+    {
+        cout << root->key << "  ";
+        print(root->right);
+        print(root->left);
+    }
+}
 
 int main()
 {
-    binaryTree makeTree;
+    BST makeTree;
     makeTree.inputData();
     return 0;
 }
