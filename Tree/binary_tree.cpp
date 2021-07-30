@@ -7,13 +7,6 @@ public:
     int key;
     node *left;
     node *right;
-    // node();
-    // node(int data)
-    // {
-    //     key = data;
-    //     left = NULL;
-    //     right = NULL;
-    // }
 };
 
 class BST
