@@ -7,13 +7,13 @@ public:
     int key;
     node *left;
     node *right;
-    node();
-    node(int data)
-    {
-        key = data;
-        left = NULL;
-        right = NULL;
-    }
+    // node();
+    // node(int data)
+    // {
+    //     key = data;
+    //     left = NULL;
+    //     right = NULL;
+    // }
 };
 
 class BST
@@ -21,31 +21,39 @@ class BST
 public:
     node *root;
     void inputData();
-    void makeBST(int data);
     void print(node *root);
-    node addNode(node *root, int data);
+    node *addNode(int data);
+    node *makeBST(node *root, int data);
     BST()
     {
         root = NULL;
     }
-    
 };
 
-node BST::addNode(node *root, int data)
+node *BST::addNode(int data)
+{
+    node *newNode = new node();
+    newNode->key = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+node *BST::makeBST(node *root, int data)
 {
     if (root == NULL)
     {
-        return node(data);
+        root = addNode(data);
     }
     else if (root->key > data)
     {
-        *root->right = addNode(root->left, data);
+        root->left = makeBST(root->left, data);
     }
     else
     {
-        *root->right = addNode(root->right, data);
+        root->right = makeBST(root->right, data);
     }
-    return *root;
+    return root;
 }
 
 void BST::inputData()
@@ -65,10 +73,10 @@ void BST::inputData()
         case 1:
             cout << "Enter number for node : ";
             cin >> nodeData;
-            addNode(root, nodeData);
+            root = makeBST(root, nodeData);
             break;
         case 2:
-            cout << "The tree in postorder traversal is : "; 
+            cout << "The tree in postorder traversal is : ";
             print(root);
             cout << endl;
             break;
@@ -84,8 +92,8 @@ void BST::print(node *root)
     }
     else
     {
-        cout << root->key << "  ";
         print(root->right);
+        cout << root->key << "  ";
         print(root->left);
     }
 }
