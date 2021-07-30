@@ -14,7 +14,9 @@ class BST
 public:
     node *root;
     void inputData();
-    void print(node *root);
+    void printInorder(node *root);
+    void preOrder(node *root);
+    void postOrder(node *root);
     node *addNode(int data);
     node *makeBST(node *root, int data);
     BST()
@@ -70,14 +72,24 @@ void BST::inputData()
             break;
         case 2:
             cout << "The tree in Inorder traversal is : ";
-            print(root);
+            printInorder(root);
+            cout << endl;
+            break;
+        case 4:
+            cout << "The tree in Preorder traversal is : ";
+            preOrder(root);
+            cout << endl;
+            break;
+        case 5:
+            cout << "The tree in Postorder traversal is : ";
+            postOrder(root);
             cout << endl;
             break;
         }
     }
 }
 
-void BST::print(node *root)
+void BST::printInorder(node *root)
 {
     if (root == 0)
     {
@@ -85,9 +97,37 @@ void BST::print(node *root)
     }
     else
     {
-        print(root->right);
+        printInorder(root->left);
         cout << root->key << "  ";
-        print(root->left);
+        printInorder(root->right);
+    }
+}
+
+void BST::preOrder(node *root)
+{
+    if (root == 0)
+    {
+        return;
+    }
+    else
+    {
+        cout << root->key << "  ";
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+}
+
+void BST::postOrder(node *root)
+{
+    if (root == 0)
+    {
+        return;
+    }
+    else
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        cout << root->key << "  ";
     }
 }
 
