@@ -69,7 +69,7 @@ void BST::inputData()
             root = makeBST(root, nodeData);
             break;
         case 2:
-            cout << "The tree in postorder traversal is : ";
+            cout << "The tree in Inorder traversal is : ";
             print(root);
             cout << endl;
             break;
