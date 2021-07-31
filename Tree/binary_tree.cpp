@@ -17,6 +17,8 @@ public:
     void printInorder(node *root);
     void preOrder(node *root);
     void postOrder(node *root);
+    void findMax(node *root);
+    void findMin(node *root);
     int findElement(node *root, int find, int returnValue);
     node *addNode(int data);
     node *makeBST(node *root, int data);
@@ -62,6 +64,8 @@ void BST::inputData()
         cout << "3 to print Preorder traversal\n";
         cout << "4 to print Postorder traversal\n";
         cout << "5 to search for an element in the tree\n";
+        cout << "6 to print largest number in the tree.\n";
+        cout << "7 to print smallest number in the tree.\n";
         cout << "0 to quit\n";
         cin >> operation;
         switch (operation)
@@ -90,7 +94,7 @@ void BST::inputData()
             cout << endl;
             break;
         case 5:
-            int find, returnValue = -1;
+            int find, returnValue;
             cout << "Enter element that has to be searched : ";
             cin >> find;
             returnValue = findElement(root, find, returnValue);
@@ -102,6 +106,13 @@ void BST::inputData()
             {
                 cout << "The element is not present in the tree.\n";
             }
+            break;
+
+        case 6:
+            findMax(root);
+            break;
+        case 7:
+            findMin(root);
             break;
         }
     }
@@ -178,6 +189,38 @@ int BST::findElement(node *root, int find, int returnValue)
         }
     }
     return returnValue;
+}
+
+void BST::findMax(node *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree empty.\n";
+    }
+    else
+    {
+        while (root->right != NULL)
+        {
+            root = root->right;
+        }
+        cout << "Largest number in the tree is : " << root->key << endl;
+    }
+}
+
+void BST::findMin(node *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree empty.\n";
+    }
+    else
+    {
+        while (root->left != NULL)
+        {
+            root = root->left;
+        }
+        cout << "Smallest number in the tree is : " << root->key << endl;
+    }
 }
 
 int main()
