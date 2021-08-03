@@ -6,3 +6,4 @@
  
  **BST** - make bst, print inorder
  
+ **Sorting** - Merge sort, Insertion Sort
