@@ -3,7 +3,7 @@ using namespace std;
 
 void insertionSort(int array[], int size)
 {
-    // key points to the next index till where array has been sorted.
+    // key points to the k+1 index where array has been sorted from [0,k]
     // key starts from 1 as 0th index element is always sorted i.e. only element in the the sorted portion
     int key=1, i, j;
     for (int key = 1; key < size; key++)
