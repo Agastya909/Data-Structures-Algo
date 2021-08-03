@@ -40,7 +40,7 @@ void splitArray(int *array, int size)
     splitArray(arrayLeft, mid);
     splitArray(arrayRight, size - mid);
     mergeArrays(arrayLeft, arrayRight, array, mid, size-mid);
-    // freeing the memory used by making duplicate arrays
+    // freeing the memory used making duplicate arrays
     free(arrayLeft);
     free(arrayRight);
 }
