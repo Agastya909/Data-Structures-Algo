@@ -75,7 +75,9 @@ void heapify(int *array, int size, int index)
     }
 
     // exit condition for recursion
-    // keep heapifying untill the heap is not max heap for that particular index
+    // keep heapifying untill the heap is not max heap 
+    // for the subtree for the particular index
+    // ps. no actual tree is there, just visualising it.
 
     if(parent!=index)
     {
