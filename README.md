@@ -2,8 +2,7 @@
 ## C++ implementations of various data structures and algorithms.
 
 ### Linked List
-       *Add node
-       * Add node at n position
+       * Add node *Add node at n position
        * Delete node
        * Delete node from n position
        * Reverse the list iteratively and recusively
