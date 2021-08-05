@@ -1,8 +1,8 @@
 # Data-Structures-Algo
 ## C++ implementations of various data structures and algorithms.
 
- **Linked list** - add, add at n, dlt, dlt at n,
-        reversal (iterative and recrusive), print
+ **Linked list** -  Add node, Add node at n position, Delete node, Delete node from n position
+        Reverse the list iteratively and recusively, Print the list in both ways.
  
  **BST** - make bst, print inorder
  
