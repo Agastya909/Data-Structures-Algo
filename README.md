@@ -7,8 +7,9 @@
               1.2 Add node at n position
               1.3 Delete node
               1.4 Delete node from n position
-              1.5 Reverse the list iteratively and recusively
+              1.5 Reverse the list iteratively and recursively
               1.5 Print the list in both ways.
+              > DJKJL
  ### BST 
        * Print Inorder, Preorder and Postorder traversal
        * Print Maximum and minimum element of the tree
