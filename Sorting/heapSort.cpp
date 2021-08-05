@@ -14,9 +14,7 @@ int main()
     cin >> size;
     int array[size];
     inputArray(array, size);
-    // cout << "Input array : \n";
-    // print(array, size);
-    cout << "\nSorted array is : \n";
+    cout << "Sorted array is : \n";
     heapSort(array, size);
     print(array, size);
     return 0;
@@ -50,9 +48,9 @@ void heapSort(int *array, int size)
     
     // after max head is created with all the elements,
     // swap root and last elements and make a max heap
-    // again discarding the last element which is the
-    // largest element in the heap and repeat this process 
-    // after every root-last swap untill swap is possible
+    // again and after every heapify, initial index is
+    // moved back by one so that the largest element is 
+    // not included in the heap again.
 
     for (int i = size-1; i >= 0; i--)
     {
