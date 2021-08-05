@@ -17,14 +17,14 @@
               2.3 Delete node.
               2.4 Delete node from n position.
               2.5 Print the list in both ways.
- ### Tree 
+ ### [Tree](https://github.com/Agastya909/Data-Structures-Algo/tree/main/Tree)
 
        1. Binary Search Tree 
               1.1 Print Inorder, Preorder and Postorder traversal.
               1.2 Print Maximum and minimum element of the tree.
               1.3 Search if the particular element is in the tree or not.
 
- ### Sorting 
+ ### [Sorting](https://github.com/Agastya909/Data-Structures-Algo/tree/main/Sorting) 
        1. Merge Sort
        2. Insertion Sort
        3. Heap Sort
