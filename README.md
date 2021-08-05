@@ -1,5 +1,5 @@
 # Data-Structures-Algo
-## C++ implementations of various data structures and algorithms.
+## C++ implementations of various Data Structures and Algorithms.
 
 ### [Linked List](https://github.com/Agastya909/Data-Structures-Algo/tree/main/linkedList)
 
