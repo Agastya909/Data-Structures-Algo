@@ -6,4 +6,4 @@
  
  **BST** - make bst, print inorder
  
- **Sorting** - Merge sort, Insertion Sort
+ **Sorting** - Merge Sort, Insertion Sort, Heap Sort, BST Sort
