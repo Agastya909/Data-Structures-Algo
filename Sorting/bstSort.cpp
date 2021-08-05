@@ -1,3 +1,4 @@
+// BST sort is nothing but inorder traversal of the BST
 #include <iostream>
 using namespace std;
 
@@ -25,6 +26,7 @@ public:
 
 node *BST::addNode(int data)
 {
+    // this fn() creates a new node 
     node *newNode = new node();
     newNode->key = data;
     newNode->left = NULL;
@@ -34,6 +36,8 @@ node *BST::addNode(int data)
 
 node *BST::makeBST(node *root, int data)
 {
+    // this fn() appends the node returned 
+    //from the above (addNode())  to the tree
     if (root == NULL)
     {
         root = addNode(data);
