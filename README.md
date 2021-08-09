@@ -23,7 +23,10 @@
               1.1 Print Inorder, Preorder and Postorder traversal.
               1.2 Print Maximum and minimum element of the tree.
               1.3 Search if the particular element is in the tree or not.
-
+       2. AVL Tree
+              2.1 Print Inorder, Preorder and Postorder traversal.
+              2.2 Print Maximum and minimum element of the tree.
+              2.3 Search if the particular element is in the tree or not.
  ### [Sorting](https://github.com/Agastya909/Data-Structures-Algo/tree/main/Sorting) 
        1. Merge Sort
        2. Insertion Sort
