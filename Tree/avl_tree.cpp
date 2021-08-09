@@ -14,25 +14,26 @@ class AVL
 {
 public:
     node *root;
-    void input();
-    void printInorder(node *root);
-    // void preOrder(node *root);
-    // void postOrder(node *root);
-    // void findMax(node *root);
-    // void findMin(node *root);
-    int heightTree(node *root);
-    int getBalance(node *root);
-    // int findElement(node *root, int find, int returnValue);
     node *addNode(int data);
-    node *makeBST(node *root, int data);
+    node *makeAVL(node *root, int data);
     node *rotateRight(node *root);
     node *rotateLeft(node *root);
+    void input();
+    void printInorder(node *root);
+    void preOrder(node *root);
+    void postOrder(node *root);
+    void findMax(node *root);
+    void findMin(node *root);
+    int heightTree(node *root);
+    int getBalance(node *root);
+    int findElement(node *root, int find, int returnValue);
     AVL()
     {
         root = NULL;
     }
 };
 
+// Creates a new node and returns it's address
 node *AVL::addNode(int data)
 {
     node *newNode = new node();
@@ -43,7 +44,8 @@ node *AVL::addNode(int data)
     return newNode;
 }
 
-node *AVL::makeBST(node *root, int data)
+// Attaches the node to the AVL tree
+node *AVL::makeAVL(node *root, int data)
 {
     if (root == NULL)
     {
@@ -51,24 +53,17 @@ node *AVL::makeBST(node *root, int data)
     }
     else if (root->key > data)
     {
-        root->left = makeBST(root->left, data);
+        root->left = makeAVL(root->left, data);
     }
     else if (root->key < data)
     {
-        root->right = makeBST(root->right, data);
+        root->right = makeAVL(root->right, data);
     }
     else
     {
         return root;
     }
-    /*
-        also use height with if else to i.e. 
-        if(root.left == NULL) {left = 0; }
-        else { left = height; }
 
-        if(root.right == NULL) {left = 0; }
-        else { left = height; }
-    */
     root->height = 1 + max(heightTree(root->left), heightTree(root->right));
     int balFac = getBalance(root);
 
@@ -87,13 +82,13 @@ node *AVL::makeBST(node *root, int data)
         root->left = rotateLeft(root->left);
         return rotateRight(root);
     }
-    
+
     if (balFac < -1 && data < root->right->key)
     {
         root->right = rotateRight(root->right);
         return rotateLeft(root);
     }
-    
+
     return root;
 }
 
@@ -148,6 +143,37 @@ int AVL::getBalance(node *root)
     return heightTree(root->left) - heightTree(root->right);
 }
 
+int AVL::findElement(node *root, int find, int returnValue)
+{
+    if (root->key == find)
+    {
+        returnValue = 1;
+    }
+    else if (root->key > find)
+    {
+        if (root->left != NULL)
+        {
+            returnValue = findElement(root->left, find, returnValue);
+        }
+        else
+        {
+            returnValue = 0;
+        }
+    }
+    else if (root->key < find)
+    {
+        if (root->right != NULL)
+        {
+            returnValue = findElement(root->right, find, returnValue);
+        }
+        else
+        {
+            returnValue = 0;
+        }
+    }
+    return returnValue;
+}
+
 void AVL::input()
 {
     int operation, nodeData;
@@ -171,44 +197,44 @@ void AVL::input()
         case 1:
             cout << "Enter number for node : ";
             cin >> nodeData;
-            root = makeBST(root, nodeData);
+            root = makeAVL(root, nodeData);
             break;
         case 2:
             cout << "The tree in Inorder traversal is : ";
             printInorder(root);
             cout << endl;
             break;
-        // case 3:
-        //     cout << "The tree in Preorder traversal is : ";
-        //     preOrder(root);
-        //     cout << endl;
-        //     break;
-        // case 4:
-        //     cout << "The tree in Postorder traversal is : ";
-        //     postOrder(root);
-        //     cout << endl;
-        //     break;
-        // case 5:
-        //     int find, returnValue;
-        //     cout << "Enter element that has to be searched : ";
-        //     cin >> find;
-        //     returnValue = findElement(root, find, returnValue);
-        //     if (returnValue == 1)
-        //     {
-        //         cout << "The element is present in the tree.\n";
-        //     }
-        //     else
-        //     {
-        //         cout << "The element is not present in the tree.\n";
-        //     }
-        //     break;
+        case 3:
+            cout << "The tree in Preorder traversal is : ";
+            preOrder(root);
+            cout << endl;
+            break;
+        case 4:
+            cout << "The tree in Postorder traversal is : ";
+            postOrder(root);
+            cout << endl;
+            break;
+        case 5:
+            int find, returnValue;
+            cout << "Enter element that has to be searched : ";
+            cin >> find;
+            returnValue = findElement(root, find, returnValue);
+            if (returnValue == 1)
+            {
+                cout << "The element is present in the tree.\n";
+            }
+            else
+            {
+                cout << "The element is not present in the tree.\n";
+            }
+            break;
 
-        // case 6:
-        //     findMax(root);
-        //     break;
-        // case 7:
-        //     findMin(root);
-        //     break;
+        case 6:
+            findMax(root);
+            break;
+        case 7:
+            findMin(root);
+            break;
         case 8:
             int hTree;
             hTree = heightTree(root);
@@ -229,6 +255,66 @@ void AVL::printInorder(node *root)
         printInorder(root->left);
         cout << root->key << "  ";
         printInorder(root->right);
+    }
+}
+
+void AVL::preOrder(node *root)
+{
+    if (root == 0)
+    {
+        return;
+    }
+    else
+    {
+        cout << root->key << "  ";
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+}
+
+void AVL::postOrder(node *root)
+{
+    if (root == 0)
+    {
+        return;
+    }
+    else
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        cout << root->key << "  ";
+    }
+}
+
+void AVL::findMax(node *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree empty.\n";
+    }
+    else
+    {
+        while (root->right != NULL)
+        {
+            root = root->right;
+        }
+        cout << "Largest number in the tree is : " << root->key << endl;
+    }
+}
+
+void AVL::findMin(node *root)
+{
+    if (root == NULL)
+    {
+        cout << "Tree empty.\n";
+    }
+    else
+    {
+        while (root->left != NULL)
+        {
+            root = root->left;
+        }
+        cout << "Smallest number in the tree is : " << root->key << endl;
     }
 }
 
