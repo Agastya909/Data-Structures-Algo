@@ -77,11 +77,11 @@ node *AVL::makeBST(node *root, int data)
         return rotateRight(root);
     }
 
-    if (balFac > 1 && root->left->key < data)
+    if (balFac < -1 && root->right->key < data)
     {
         return rotateLeft(root);
     }
-    
+
 
     return root;
 }
@@ -93,6 +93,20 @@ node *AVL::rotateRight(node *root)
 
     newRoot->right = root;
     root->left = temp;
+
+    root->height = max(heightTree(root->left), heightTree(root->right));
+    newRoot->height = max(heightTree(newRoot->left), heightTree(newRoot->right));
+
+    return newRoot;
+}
+
+node *AVL::rotateLeft(node *root)
+{
+    node *newRoot = root->right;
+    node *temp = newRoot->left;
+
+    newRoot->left = root;
+    root->right = temp;
 
     root->height = max(heightTree(root->left), heightTree(root->right));
     newRoot->height = max(heightTree(newRoot->left), heightTree(newRoot->right));
@@ -206,7 +220,7 @@ void AVL::printInorder(node *root)
         printInorder(root->right);
     }
 }
-//main
+
 int main()
 {
     AVL makeTree;
