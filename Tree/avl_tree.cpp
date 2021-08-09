@@ -69,7 +69,7 @@ node *AVL::makeBST(node *root, int data)
         if(root.right == NULL) {left = 0; }
         else { left = height; }
     */
-    root->height = max(heightTree(root->left), heightTree(root->right));
+    root->height = 1 + max(heightTree(root->left), heightTree(root->right));
     int balFac = getBalance(root);
 
     if (balFac > 1 && root->left->key > data)
@@ -82,7 +82,18 @@ node *AVL::makeBST(node *root, int data)
         return rotateLeft(root);
     }
 
-
+    if (balFac > 1 && data > root->left->key)
+    {
+        root->left = rotateLeft(root->left);
+        return rotateRight(root);
+    }
+    
+    if (balFac < -1 && data < root->right->key)
+    {
+        root->right = rotateRight(root->right);
+        return rotateLeft(root);
+    }
+    
     return root;
 }
 
